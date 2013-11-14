@@ -13,7 +13,7 @@
         </rect>
     </property>
     <property name="caption">
-        <string>rtfMRI Settings</string>
+        <string>rtfMRI Settings - Stevens version </string>
     </property>
     <property name="sizeGripEnabled">
         <bool>true</bool>
