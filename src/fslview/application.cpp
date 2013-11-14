@@ -913,7 +913,6 @@ void ApplicationWindow::customEvent(QCustomEvent *event)
 		case 12345: // RTThread start will trigger this event "rtproc.cpp"
 		{
 			QString *s = (QString *) event->data();
-      cout << "RTThread processing ..." << endl;
 			RTLoop(*s);
 			break;
 		}
