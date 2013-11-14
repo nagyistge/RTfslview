@@ -26,7 +26,6 @@ void rtfMRIDialog::setMaskFile()
 
 void rtfMRIDialog::setInputDir()
 {
-
 	//set Menu Items Stat;
 	QString dir = QFileDialog::getExistingDirectory( "Real Time File Directory",this, QDir::currentDirPath() );
 	if(!dir.isEmpty()) {
