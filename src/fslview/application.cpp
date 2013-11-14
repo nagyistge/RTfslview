@@ -838,7 +838,7 @@ void ApplicationWindow::RTLoop(QString fn)
   fbase = fbase.substr(fbase.rfind("/"),string::npos);
   fbase = fbase.substr(1, fbase.rfind(".nii.gz")-1);
 
-  HistogramWidget* histogram;
+  //HistogramWidget* histogram;
 
   while( errcnt < 5)
   {
@@ -1189,6 +1189,7 @@ bool ApplicationWindow::loadOverlay(const QString & absFilePath,QString lookupta
 	    //	m_imageGroup->addLookUpTable(LookUpTable::redYellow());
 	    m_cursor->setVMax(overlay->getInfo()->inqNumVolumes());
 	    
+	   // add histogram here #FIXME
 	    unsigned int v = m_cursor->inqV();
 	    HistogramWidget* histogram = 
 	    new HistogramWidget(m_ws, overlay->getVolume(v),
