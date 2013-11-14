@@ -32,7 +32,7 @@ class RTThread : public QThread
 	public:
 		RTThread();
 		virtual ~RTThread();
-		void run();
+		void run();	// overload run()
 		void stop();
 		void set_fileread();
 	    void set_properties(QMainWindow *,QString, QString, int,int);

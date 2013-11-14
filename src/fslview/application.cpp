@@ -886,7 +886,7 @@ void ApplicationWindow::runRTExp(QString inputdir, QString mask,int NRT,int buff
   RToutputdir = inputdir.left(inputdir.length()-1) + "_read/";
 	
   rtthread->set_properties(this,inputdir,mask,NRT,buffer);
-  rtthread->start();
+  rtthread->start(); // QThread function will call run()
 
 }
 
@@ -913,6 +913,7 @@ void ApplicationWindow::customEvent(QCustomEvent *event)
 		case 12345: // RTThread start will trigger this event "rtproc.cpp"
 		{
 			QString *s = (QString *) event->data();
+      cout << "RTThread processing ..." << endl;
 			RTLoop(*s);
 			break;
 		}
