@@ -829,7 +829,7 @@ void ApplicationWindow::endRT()
 
 void ApplicationWindow::RTLoop(QString fn)
 {
-  
+  // RTLoop will process the data
   int errcnt = 0;
   //QString file = RTinputdir + fn;
   //QString outfile =  RToutputdir + fn;
@@ -842,10 +842,11 @@ void ApplicationWindow::RTLoop(QString fn)
 
   while( errcnt < 5)
   {
-	try //Since data is transferred asynchronously, sometimes we try to read the file before it is completely written
+	try //Since data is transferred asynchronously, 
+      //sometimes we try to read the file before it is completely written
 	{
 				
-		if (windowListEmpty())
+		if (windowListEmpty()) // the main workspace has something already
 		{
 			//dcm2nii			
 			fileOpen(fn,"greyscale");
@@ -905,15 +906,17 @@ void ApplicationWindow::viewrtfMRIDialog()
 
 void ApplicationWindow::customEvent(QCustomEvent *event)
 {
+  // callback function : xingzhong 
+  // event type , event data is the file data
 	switch(event->type())
 	{
-		case 12345:
+		case 12345: // RTThread start will trigger this event "rtproc.cpp"
 		{
 			QString *s = (QString *) event->data();
 			RTLoop(*s);
 			break;
 		}
-		case 12346:
+		case 12346: // RTThread stop will trigger this event 
 		{
 			rtfMRIAction->setEnabled(true);
 			break;

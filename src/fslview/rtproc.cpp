@@ -130,9 +130,10 @@ void RTThread::stop()
   
 void RTThread::set_fileread()
 {
+		// function called when finish one file
 		mutex.lock();
 		file_read = TRUE;
-	        nrt_elapsed++;
+	    nrt_elapsed++;
 		mutex.unlock();
 }
 /*  

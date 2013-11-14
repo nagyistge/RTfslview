@@ -35,7 +35,7 @@ class RTThread : public QThread
 		void run();
 		void stop();
 		void set_fileread();
-	        void set_properties(QMainWindow *,QString, QString, int,int);
+	    void set_properties(QMainWindow *,QString, QString, int,int);
 		QString get_outputdir();
 		int NRT;
 		
@@ -54,7 +54,7 @@ class RTThread : public QThread
 		int findFiles(QString, QStringList &);
 		QString lastdcm;
 		QDir IDir;
-                QStringList Design;
+        QStringList Design;
 		const QFileInfoList *InfoList;		
 		
 		
