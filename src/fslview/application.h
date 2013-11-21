@@ -23,7 +23,7 @@
 #include <qmainwindow.h>
 #include "cursor.h"
 #include <qlist.h>
-#include "imagegroup.h" 
+#include "imagegroup.h"
 #include "overlaylist.h"
 #include "properties.h"
 #include "options.h"
@@ -51,148 +51,148 @@ class QThread;
 
 #include "applicationwindowbase.h"
 
-class ApplicationWindow: public ApplicationWindowBase, 
-			 public CursorObserver
+class ApplicationWindow: public ApplicationWindowBase,
+    public CursorObserver
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
-  ApplicationWindow(ApplicationOptions&);
-  virtual ~ApplicationWindow();
-  virtual void update(const Cursor::Handle&);
+    ApplicationWindow(ApplicationOptions &);
+    virtual ~ApplicationWindow();
+    virtual void update(const Cursor::Handle &);
 
-  bool loadFile(const QString &);
-  bool loadFile(const QString &, QString lookuptable);
-  void setCurrentDir(QString);
-  void loadFeat(const QString &);
+    bool loadFile(const QString &);
+    bool loadFile(const QString &, QString lookuptable);
+    void setCurrentDir(QString);
+    void loadFeat(const QString &);
 
-  //public slots:
-  //  void saveOverlay();
-  //  void addOverlay();  
-  //  void remOverlay();
-  //  void fileCreateMask();
-  //  void fileCloseWindow();
-  
-  void setFileMenuItemsState(void);
-  //void customEvent(QCustomEvent *);
+    //public slots:
+    //  void saveOverlay();
+    //  void addOverlay();
+    //  void remOverlay();
+    //  void fileCreateMask();
+    //  void fileCloseWindow();
+
+    void setFileMenuItemsState(void);
+    //void customEvent(QCustomEvent *);
 
 public slots:
-	 void endRT();
-	 void RTLoop(QString file);
+    void endRT();
+    void RTLoop(QString file);
 
 private slots:
-  void fileOpen();
-  void fileOpen(QString fn, QString lookuptable);
-  void fileOpen152();
-  void fileSaveAs();
-  void fileAdd();
-  void fileAdd(QString fn, QString lookuptable);
-  void fileAdd152();
-  void fileRemove();
-  void fileCreateMask();
-  void fileCloseWindow();
-//   void windowCascade();
-//   void windowTile();
+    void fileOpen();
+    void fileOpen(QString fn, QString lookuptable);
+    void fileOpen152();
+    void fileSaveAs();
+    void fileAdd();
+    void fileAdd(QString fn, QString lookuptable);
+    void fileAdd152();
+    void fileRemove();
+    void fileCreateMask();
+    void fileCloseWindow();
+    //   void windowCascade();
+    //   void windowTile();
 
-  void viewOrthographic();
-  void viewLightbox();
-  void viewSingle();
-  void view3d();
-  void viewTimeseries();  
-  void viewImageHistogram();
-  void viewClusterBrowser();
-  void viewrtfMRIDialog();
-  void filePreferences();
+    void viewOrthographic();
+    void viewLightbox();
+    void viewSingle();
+    void view3d();
+    void viewTimeseries();
+    void viewImageHistogram();
+    void viewClusterBrowser();
+    void viewrtfMRIDialog();
+    void filePreferences();
 
-  void fileMenuAboutToShow();  
-  void viewMenuAboutToShow();
-  void windowMenuAboutToShow();
-  void windowMenuActivated( int id );
-  void displayMessage(const QString &, int);
-  void setMenuItems_NoImages(void);
+    void fileMenuAboutToShow();
+    void viewMenuAboutToShow();
+    void windowMenuAboutToShow();
+    void windowMenuActivated( int id );
+    void displayMessage(const QString &, int);
+    void setMenuItems_NoImages(void);
 
-  void helpAbout();
-  void helpAboutQt();
-  void helpOnlineHelp();
-  void help3DRendering();
+    void helpAbout();
+    void helpAboutQt();
+    void helpOnlineHelp();
+    void help3DRendering();
 
 
 public slots:
-  void addLookUpTable();
-  void childWindowClose(QCloseEvent*);
-  void assistantError(const QString&);
-  void menusUpdate();
+    void addLookUpTable();
+    void childWindowClose(QCloseEvent *);
+    void assistantError(const QString &);
+    void menusUpdate();
 
 signals:
-  void message(const QString&, int );
-  // emits a signal to inform that the work space is empty; used to set/reset menu options
-  void workSpaceEmpty(void);
-  
+    void message(const QString &, int );
+    // emits a signal to inform that the work space is empty; used to set/reset menu options
+    void workSpaceEmpty(void);
+
 
 private:
-  QWorkspace* m_ws;
-  QMutex *mutex;
-  RTThread *rtthread;
-  QString RTinputdir, RToutputdir;
-//   QMenuBar* m_mb;
-//   QPopupMenu* m_fileMenu;
-//   QPopupMenu* m_windowsMenu;
-//   QPopupMenu* m_toolsMenu;
-  
-//   int m_fileOpenID,m_fileCloseID,m_fileAddOverlayID,m_fileRemOverlayID,
-//     m_fileCreateMaskID, m_fileSaveOverlayID,m_fileOpenFeatID;
-//   int m_imageAddLutID;
-//   int m_viewOrthoID,m_viewLightID,m_viewSingleID,m_viewVtkID,
-//       m_viewHistID,m_viewTimeID,m_viewTimeGridID;
-  bool loadOverlay(const QString & absFilePath, QString lookuptable);
-  bool loadOverlay(const QString & absFilePath);
-  void buildMenus();
-  bool checkAbsFilePath(const QString & absFilePath, QString ext);
-  void setupStatusBar();
-  void constructToolBar();
-  void connectControls();
-  bool windowListEmpty();
-  int  windowListCount();
-  void catchFileError(FileError);
-  void viewShow(QWidget*);
-  bool tarnishCheck(Image::Handle &);
-  bool tarnishCheck();
-  void removeExtensions(QString & fileName);
-  bool checkFilesExist(const QString & baseName, bool justImg); 
-  bool checkSpecificFilesExist(const QString & baseName);
-  bool checkForDuplicates(const QString & fn);
-  OverlayList::Handle activeOverlayList();
-  OverlayList::Handle copyActiveOverlayList();
-  void runRTExp(QString inputdir, QString mask, int NTR,int buffer); 
-  //helper functions for initializing PopUpMenus items; Rama - 3/11/04
-  void initFileMenuItems(bool);
-  void initViewMenuItems(bool);
-  void setViewMenuItemsState(void);
-  
+    QWorkspace *m_ws;
+    QMutex *mutex;
+    RTThread *rtthread;
+    QString RTinputdir, RToutputdir;
+    //   QMenuBar* m_mb;
+    //   QPopupMenu* m_fileMenu;
+    //   QPopupMenu* m_windowsMenu;
+    //   QPopupMenu* m_toolsMenu;
 
-  QString            m_filename;
-  QStatusBar        *m_statusBar;
+    //   int m_fileOpenID,m_fileCloseID,m_fileAddOverlayID,m_fileRemOverlayID,
+    //     m_fileCreateMaskID, m_fileSaveOverlayID,m_fileOpenFeatID;
+    //   int m_imageAddLutID;
+    //   int m_viewOrthoID,m_viewLightID,m_viewSingleID,m_viewVtkID,
+    //       m_viewHistID,m_viewTimeID,m_viewTimeGridID;
+    bool loadOverlay(const QString &absFilePath, QString lookuptable);
+    bool loadOverlay(const QString &absFilePath);
+    void buildMenus();
+    bool checkAbsFilePath(const QString &absFilePath, QString ext);
+    void setupStatusBar();
+    void constructToolBar();
+    void connectControls();
+    bool windowListEmpty();
+    int  windowListCount();
+    void catchFileError(FileError);
+    void viewShow(QWidget *);
+    bool tarnishCheck(Image::Handle &);
+    bool tarnishCheck();
+    void removeExtensions(QString &fileName);
+    bool checkFilesExist(const QString &baseName, bool justImg);
+    bool checkSpecificFilesExist(const QString &baseName);
+    bool checkForDuplicates(const QString &fn);
+    OverlayList::Handle activeOverlayList();
+    OverlayList::Handle copyActiveOverlayList();
+    void runRTExp(QString inputdir, QString mask, int NTR, int buffer);
+    //helper functions for initializing PopUpMenus items; Rama - 3/11/04
+    void initFileMenuItems(bool);
+    void initViewMenuItems(bool);
+    void setViewMenuItemsState(void);
 
-  QPopupMenu        *m_viewMenu;
-  QScrollView       *m_sv;
 
-  QAssistantClient  *m_assistant;
-  ImageGroup::Handle m_imageGroup;
-  Cursor::Handle     m_cursor;
-  OverlayList::Handle m_masterOverlayList;
+    QString            m_filename;
+    QStatusBar        *m_statusBar;
 
-  Properties::Handle m_properties;
-  
-  ModelFit::Handle m_modelFit;
-  
-  FileOpen* m_fileOpen;
+    QPopupMenu        *m_viewMenu;
+    QScrollView       *m_sv;
 
-  int m_toolbarMenuId;
+    QAssistantClient  *m_assistant;
+    ImageGroup::Handle m_imageGroup;
+    Cursor::Handle     m_cursor;
+    OverlayList::Handle m_masterOverlayList;
 
-  ApplicationOptions& m_options;
+    Properties::Handle m_properties;
+
+    ModelFit::Handle m_modelFit;
+
+    FileOpen *m_fileOpen;
+
+    int m_toolbarMenuId;
+
+    ApplicationOptions &m_options;
 
 protected:
-  virtual void closeEvent(QCloseEvent*);
-  void customEvent(QCustomEvent *);
+    virtual void closeEvent(QCloseEvent *);
+    void customEvent(QCustomEvent *);
 };
 
 
