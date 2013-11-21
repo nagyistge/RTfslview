@@ -1,6 +1,11 @@
 # FIXME
 1. Each layer processing application.cpp @ 1160 `bool ApplicationWindow::loadOverlay(const QString & absFilePath,QString lookuptable)`
-2. Each data file is headered in 'storage/image.h'
+2. Each data file is headered in 'storage/image.h'. It includes
+	inqX() inqY() inqZ() is the maximum corrdinate space
+	
 3. Each file named 'nii.gz' http://nifti.nimh.nih.gov/nifti-1
 4. 'nii.gz' quote "NIFTI1 can store data with different meanings. Imaging data, statistical values and other data (any vector, matrix, label set or mesh). can be saved in a nifti1 *.nii or *.hdr/*.img file. Once a data intent is chosen, the use of the nifti1 format is unambigious since the use of particular fields for a certain intent is predetermined. "
 5. Each data file at least have timeseries of (x,y,z) and volumn attributes.
+
+# Reference 
+1. http://en.wikipedia.org/wiki/Functional_magnetic_resonance_imaging
