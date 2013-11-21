@@ -1231,15 +1231,39 @@ bool ApplicationWindow::loadOverlay(const QString &absFilePath, QString lookupta
 
                 // add histogram here #FIXME
                 unsigned int v = m_cursor->inqV();
-                emit message( QString("[Debug] .... %1").arg(v), 2000 );
-                HistogramWidget *histogram =
-                    new HistogramWidget(m_ws, overlay->getVolume(v),
-                                        overlay->getInfo()->inqImageName(),
-                                        v, overlay->getInfo()->isInteger());
-                connect( histogram, SIGNAL(windowClose(QCloseEvent *)),
-                         this, SLOT(childWindowClose(QCloseEvent *)));
-                viewShow(histogram);
-
+                emit message( QString("[Debug] %1").arg(v), 2000 );
+                //HistogramWidget *histogram =
+                //    new HistogramWidget(m_ws, overlay->getVolume(v),
+                //                        overlay->getInfo()->inqImageName(),
+                //                        v, overlay->getInfo()->isInteger());
+                //connect( histogram, SIGNAL(windowClose(QCloseEvent *)),
+                //         this, SLOT(childWindowClose(QCloseEvent *)));
+                //viewShow(histogram);
+		
+		viewImageHistogram();
+		
+		short inqX = overlay->getInfo()->inqX();
+		short inqY = overlay->getInfo()->inqY();
+		short inqZ = overlay->getInfo()->inqZ();
+		short inqNumVol = overlay->getInfo()->inqNumVolumes();
+		short XD = overlay->getInfo()->inqXDim();
+		short YD = overlay->getInfo()->inqYDim();
+		short ZD = overlay->getInfo()->inqZDim();
+		float tr = overlay->getInfo()->inqTr();
+		std::string dt = overlay->getInfo()->inqDtAsString();
+		float inqMin = overlay->getInfo()->inqMin();
+		float inqMax = overlay->getInfo()->inqMax();
+		int code = (int) overlay->getInfo()->inqPurpose();
+		int coord = (int) overlay->getInfo()->inqCoordSystem();
+                QMessageBox::warning( this, "FSLView",
+                                      QString("debug image info inqX= %1 inqY=%2 inqZ=%3 <br>").arg(inqX).arg(inqY).arg(inqZ) + 
+                                      QString("debug inqNumVol= %1<br>").arg(inqNumVol) +
+                                      QString("debug XDim = %1 YDim = %2 ZDim =%3 <br>").arg(XD).arg(YD).arg(ZD) +
+                                      QString("debug inqTr = %1 Dt = %2 <br>").arg(tr).arg(dt) +
+                                      QString("debug inqMin = %1 inqMax = %2 <br>").arg(inqMin).arg(inqMax)  + 
+                                      QString("debug IntentCode = %1 CoordCode = %2 <br>").arg(code).arg(coord)
+                                    );
+		
 
             }
             else
