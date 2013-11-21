@@ -1099,7 +1099,7 @@ bool ApplicationWindow::loadOverlay(const QString & absFilePath)
       {
         QApplication::setOverrideCursor(Qt::waitCursor);
         emit message( QString("Loading.... %1").arg(fn), 5000);
-	qApp->processEvents();
+	     qApp->processEvents();
 
         Image::Handle overlay = Image::load((const char *)fn);
 

@@ -1,0 +1,2 @@
+# FIXME
+1. Each layer processing application.cpp @ 1160 `bool ApplicationWindow::loadOverlay(const QString & absFilePath,QString lookuptable)`
